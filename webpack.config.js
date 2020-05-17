@@ -41,7 +41,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 8080,
-    hot: isDev
+    hotOnly: true
   },
   module: {
     rules: [
