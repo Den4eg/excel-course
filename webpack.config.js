@@ -13,7 +13,8 @@ const jsLoaders = () => {
     {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
       },
     },
   ];
@@ -41,7 +42,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 8080,
-    hotOnly: true
+    hot: true
   },
   module: {
     rules: [
@@ -52,8 +53,8 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: isDev,
-              reloadAll: true,
-            },
+              reloadAll: isDev,
+            }
           },
           'css-loader',
           'sass-loader'
