@@ -4,26 +4,36 @@ const CODES = {
 }
 
 
-function createCell() {
+function createCell(_, index) {
   return `
-        <div class="cell" contenteditable></div>
+        <div class="cell" contenteditable data-col="${index}"></div>
     `
 }
 
-function toColumn(col) {
+function toColumn(col, index) {
+  const resize = col
+  ? `<div data-resize="col" class="col-resize"></div>`
+  : ''
   return `
-  <div class="column">
+  <div data-type="resizeble"  data-col="${index}" class="column">
     ${col}
+    ${resize}
   </div>
 `
 }
 
-function createRow(content, number = '') {
+
+function createRow(content, index = '') {
+  const resize = index ? '<div data-resize="row" class="row-resize"></div>' : ''
   return `
   <div class="row">
-    <div class="row-info">${number}</div>
+    <div class="row-info">
+        ${index ? index : ''}
+        ${resize}
+    </div>
     <div class="row-data">
       ${content}
+      
      </div>
 </div>`
 }

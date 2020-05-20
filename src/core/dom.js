@@ -30,12 +30,27 @@ class Dom {
     return this
   }
 
+  closest(selector) {
+    return $(this.$el.closest(selector))
+  }
+  getCoords() {
+    return this.$el.getBoundingClientRect()
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector)
+  }
+
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback)
   }
 
   off(eventName, callback) {
     this.$el.removeEventListener(eventName, callback)
+  }
+
+  get data() {
+    return this.$el.dataset
   }
 }
 
